@@ -6,13 +6,11 @@
  */
 exports.weatherBigquery = function (event, callback) {
   const BigQuery = require('@google-cloud/bigquery');
-  const projectId = "brandonfreitag-sandbox";
-  const datasetId = "raspberryweather_dataset";
-  const tableId = "raspberryweather_table";
+  const projectId = "myProject"; //Enter your project ID here
+  const datasetId = "myDataset"; //Enter your BigQuery dataset name here
+  const tableId = "myTable"; //Enter your BigQuery table name here -- make sure it is setup correctly
   const pubsubMessage = event.data;
   const incomingData = pubsubMessage.data ? Buffer.from(pubsubMessage.data, 'base64').toString() : "{'sensorID':'na','timecollected':'1/1/1970 00:00:00','zipcode':'00000','latitude':'0.0','longitude':'0.0','temperature':'-273','humidity':'-1','dewpoint':'-273','pressure':'0'}";
-//  const rows = [{"pressure": "24.46", "temperature": "68.73", "dewpoint": "42.43", "timecollected": "10/31/2017 14:11:54", "latitude": "40.026176", "sensorID": "s-2525-226F", "zipcode": "80301", "longitude": "-105.259047", "humidity": "26.94"}];
-//  const rows = [`${incomingData}`];
   const jsonData = JSON.parse(incomingData);
   var rows = [jsonData];
 
