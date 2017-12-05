@@ -10,12 +10,12 @@ exports.weatherBigquery = function (event, callback) {
   const datasetId = "myDataset"; //Enter your BigQuery dataset name here
   const tableId = "myTable"; //Enter your BigQuery table name here -- make sure it is setup correctly
   const pubsubMessage = event.data;
+  // Incoming data is in JSON format
   const incomingData = pubsubMessage.data ? Buffer.from(pubsubMessage.data, 'base64').toString() : "{'sensorID':'na','timecollected':'1/1/1970 00:00:00','zipcode':'00000','latitude':'0.0','longitude':'0.0','temperature':'-273','humidity':'-1','dewpoint':'-273','pressure':'0'}";
   const jsonData = JSON.parse(incomingData);
   var rows = [jsonData];
 
-//  console.log(`Received: ${incomingData}`);
-  console.log(`Rows: ${rows}`);
+  console.log(`Incoming data: ${rows}`);
 
   // Instantiates a client
   const bigquery = BigQuery({
