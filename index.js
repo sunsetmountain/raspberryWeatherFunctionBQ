@@ -4,7 +4,7 @@
  * @param {object} event The Cloud Functions event.
  * @param {function} callback The callback function.
  */
-exports.weatherBigquery = function (event, callback) {
+exports.subscribe = function (event, callback) {
   const BigQuery = require('@google-cloud/bigquery');
   const projectId = "myProject"; //Enter your project ID here
   const datasetId = "myDataset"; //Enter your BigQuery dataset name here
